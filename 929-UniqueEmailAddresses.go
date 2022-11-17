@@ -25,3 +25,25 @@ func numUniqueEmails(emails []string) int {
     return len(emailMap)
          
 }
+
+
+
+func numUniqueEmails1(emails []string) int {
+    
+      emailMap := make(map[string]bool)
+    
+     for _, email := range emails {
+          atIndex := strings.Index(email, "@")
+          local := string(email[:atIndex])
+          if plusIndex := strings.Index(local, "+"); plusIndex > -1 {
+            local = string(local[:plusIndex])
+        }
+         local = strings.Replace(local, ".", "", -1)
+         emailAddr := local + "@" + email[atIndex:]
+         emailMap[emailAddr] = true
+}
+    
+    return len(emailMap)
+    
+}
+    
